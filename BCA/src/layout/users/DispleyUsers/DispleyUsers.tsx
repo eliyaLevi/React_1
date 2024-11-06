@@ -22,6 +22,8 @@ export const DispleyUsers = (props: PropsUser) => {
     const [user, setuser] = useState <User>()
     const [flag, setFlag] = useState(false)
 
+     
+
     
   return (
     <div className="card-list">
@@ -33,7 +35,7 @@ export const DispleyUsers = (props: PropsUser) => {
           <img src={user.img} alt="img dog" />
           <button onClick={() => props.deleteUser(user.id!)}>Delete User</button>
           <button onClick={() => setFlag(true)}>Update User</button>
-          {flag && <EditUser editUser={setuser} user={user}/>}
+          {flag && <EditUser editUser={props.updateUser} user={user}/>}
         </div>
       ))}
     </div>

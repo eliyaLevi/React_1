@@ -38,10 +38,14 @@ export const Users = () => {
     });
   };
 
-  const UpdateUser = (user: User) => {
-    console.log(user);
+  const UpdateUser = (updatedUser: User) => {
+    setUsers((prevUsers) => {
+      
+      return prevUsers.map((user) =>
+        user.id === user.id ? { ...user, ...updatedUser } : user
+    )})
     
-  }
+  };
 
   return (
     <div>
