@@ -1,7 +1,12 @@
-import React from 'react'
+import React from "react";
+import { Users } from "../users/Users";
 
-export const Main = () => {
+const Main = () => {
   return (
-    <div>Main</div>
-  )
-}
+    <main>
+      <Users />
+    </main>
+  );
+};
+
+export default Main;

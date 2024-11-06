@@ -1,7 +1,13 @@
 import React from 'react'
 
-export const Header = () => {
+export default function Header() {
   return (
-    <div>Header</div>
+    <>
+    <header>
+      <h1>
+        Busniess card app
+      </h1>
+    </header>
+    </>
   )
 }

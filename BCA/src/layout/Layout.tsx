@@ -1,15 +1,16 @@
-import React from 'react'
-import { Header } from './Header/Header'
-import { Main } from './Main/Main'
-import {Footer} from "./Footer/Footer"
+import Header from "./header/Header";
+import Main from "./main/Main";
+import { Footer } from "./footer/Footer";
+
 
 export const Layout = () => {
   return (
     <>
-     <Header/>
-    <Main/>
-    <Footer/>
+      <div className="app-container">
+        <Header />
+        <Main />
+        <Footer />
+      </div>
     </>
-   
-  )
-}
+  );
+};
