@@ -1,10 +1,15 @@
 import React from "react";
 import { Users } from "../users/Users";
 
-const Main = () => {
+
+interface Props{
+  Children: React.ReactNode
+}
+
+const Main = ({Children}: Props) => {
   return (
     <main>
-      <Users />
+       {Children} 
     </main>
   );
 };

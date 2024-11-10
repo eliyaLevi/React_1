@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import style from "../../../../public/vite.svg"
+import { Link } from "react-router-dom";
+import { PageHeader } from "../../../components/PageHeader";
 
 interface User {
   userName: string;
@@ -31,6 +33,8 @@ export const NewUser = (props: PropsNewUser) => {
 
   return (
     <div>
+      <PageHeader title="Welcome to the page of new user" subtitle="new user"/>
+      <div>
       <form className="form-container" onSubmit={handleSubmit}>
         <label htmlFor="UserName">User Name</label>
         <input
@@ -65,8 +69,10 @@ export const NewUser = (props: PropsNewUser) => {
           placeholder="img"
         />
 
-        <button type="submit">Add</button>
+        <button type="submit" style={{backgroundColor: "green" }}>Add</button>
+        <button type="submit" style={{backgroundColor: "red" }}><Link to={"/users"}>Cancel</Link></button>
       </form>
+      </div>
     </div>
   );
 };
