@@ -1,23 +1,11 @@
 import { useState, useEffect, useContext } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { userPro } from "../../../provider/UserProvider";
+import { userContext } from "../../../provider/UserProvider";
 
-interface User {
-  id?: string;
-  userName: string;
-  email: string;
-  age: number;
-  img: string;
-}
-
-export interface Props {
-  user: User;
-  UpdateUser: (user: User) => void;
-}
-export const EditUser = (props: Props) => {
+export const EditUser = () => {
   const navigate = useNavigate();
 
-  const users = useContext(userPro)
+  const { users, setUsers } = useContext(userContext);
   const { id } = useParams();
 
   const [userName, setuserName] = useState("");
@@ -26,22 +14,25 @@ export const EditUser = (props: Props) => {
   const [img, setImg] = useState("");
 
   useEffect(() => {
-    setuserName(props.user.userName);
-    setEmail(props.user.email);
-    setAge(props.user.age);
-    setImg(props.user.img);
+    const findUser = users.find((user) => user.id === id);
+    if (findUser) {
+      setuserName(findUser.userName);
+      setEmail(findUser.email);
+      setAge(findUser.age);
+      setImg(findUser.img);
+    }
   }, []);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
 
-    props.UpdateUser({ userName, email, age, img });
+    setUsers((prevUser) =>
+      prevUser.map((user) =>
+        user.id === id ? { ...user, userName, email, age, img } : user
+      )
+    );
 
-    setuserName(props.user.userName);
-    setEmail(props.user.email);
-    setAge(props.user.age);
-    setImg(props.user.img);
-    navigate("/users");
+    navigate("/Displey");
   };
 
   return (
@@ -71,15 +62,7 @@ export const EditUser = (props: Props) => {
           value={img}
           onChange={(e) => setImg(e.target.value)}
         />
-        <button
-          onClick={() =>
-            props.UpdateUser({ ...props.user, userName, email, age, img })
-          }
-        >
-          <Link to={"/users"} className="nav_link">
-            Save
-          </Link>
-        </button>
+           <button type="submit">Save!!</button>
       </form>
     </div>
   );

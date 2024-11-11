@@ -77,14 +77,11 @@ export const Users = () => {
         <Route path="/Cards" element={<Cards />} />
         <Route
           path="/Edit/:id"
-          element={<EditUser user={user!} UpdateUser={UpdateUser} />}
+          element={<EditUser />}
         />
         <Route path="*" element={<ErrorPages />} />
       </Routes>
-      <div>
-      {/* <StarUsers sterusers={starUsers}/> */}
-      </div>
-
+      <div>{/* <StarUsers sterusers={starUsers}/> */}</div>
     </div>
   );
 };

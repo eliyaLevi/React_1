@@ -9,26 +9,34 @@ export interface User {
     img: string;
   }
 
+interface Userprops{
+    users: User[]
+    setUsers: React.Dispatch<React.SetStateAction<User[]>>
+}
+
 interface Props{
     children: React.ReactNode
 }
-export const userPro = createContext<User[] | null>(null)
+export const userContext = createContext<Userprops>({
+    users: [],
+    setUsers: () => {}
+})
 
 export const UserProvider = ({children}: Props) => {
-
+    
+    const [users, setUsers] = useState<User[]>([])
     useEffect(() => {
         fetch("/a.json")
-          .then((respons) => respons.json())
-          .then((data) => setUsers(data))
-          .catch((err) => console.log(err));
-      }, []);
-
-    const [users, setUsers] = useState<User[] | null>([])
+        .then((respons) => respons.json())
+        .then((data) => setUsers(data))
+        .catch((err) => console.log(err));
+    }, []);
+    
   return (
     <>
-    <userPro.Provider value={users}>
+    <userContext.Provider value={{users, setUsers}}>
         {children}
-    </userPro.Provider >
+    </userContext.Provider >
     </>
   )
 }
