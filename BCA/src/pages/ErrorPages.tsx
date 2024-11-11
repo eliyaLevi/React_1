@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+// במקרה שיזין כתובת שגוייה יקפוץ לו הודעת שגיאה למשתמש
 export const ErrorPages = () => {
   return (
     <div className="errorPages">

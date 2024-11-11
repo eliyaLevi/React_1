@@ -21,6 +21,9 @@ export default function Header() {
           <Link className="nav_link" to={"/Login"}>
             LOGIN
           </Link>
+          <Link className="nav_link" to={"/Displey"}>
+            provider
+          </Link>
         </div>
       </header>
     </>

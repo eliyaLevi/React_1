@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { userPro } from "../../../provider/UserProvider";
 
 interface User {
   id?: string;
@@ -16,6 +17,7 @@ export interface Props {
 export const EditUser = (props: Props) => {
   const navigate = useNavigate();
 
+  const users = useContext(userPro)
   const { id } = useParams();
 
   const [userName, setuserName] = useState("");
