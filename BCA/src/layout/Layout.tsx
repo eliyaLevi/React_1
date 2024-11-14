@@ -2,15 +2,13 @@ import Header from "./header/Header";
 import Main from "./main/Main";
 import { Footer } from "./footer/Footer";
 
-interface Props {
-  Children: React.ReactNode;
-}
-export const Layout = (props: Props) => {
+
+export const Layout = () => {
   return (
     <>
       <div className="app-container">
         <Header />
-        <Main Children={props.Children} />
+        <Main  />
         <Footer />
       </div>
     </>

@@ -5,7 +5,7 @@ export const Footer = () => {
   return (
     <footer>
       <p>
-       reated by Eliya levi &copy;{new Date().getFullYear()}
+       created by Eliya levi &copy;{new Date().getFullYear()}
       </p>
     </footer>
   )
